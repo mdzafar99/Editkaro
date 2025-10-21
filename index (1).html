@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EditKaro — social media marketing & video editing agency" />
+  <title>Editkaro</title>
+  <style>
+     
+    *{
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: "Poppins", sans-serif; 
+    }
+
+    body { 
+      background: #0e0f1a; 
+      color: #fff; 
+      overflow-x: hidden; 
+    }
+
+    a { color: inherit; 
+       text-decoration: none; 
+    }
+
+    header {
+      width: 100%; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      background: rgba(15, 16, 30, 0.9);
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 1rem 1rem; 
+      z-index: 1000; 
+      backdrop-filter: blur(8px);
+    }
+    
+    .logo { 
+      font-size: 1.6rem; 
+      font-weight: 700; 
+      color: #00f5a0; 
+    }
+    
+    nav ul { 
+      display: flex; 
+      gap: 2rem; 
+      list-style: none; 
+    }
+    
+    nav ul li a { transition: 0.3s; }
+    
+    nav ul li a:hover { color: #00f5a0; }
+    
+    .hamburger { 
+      display: none; 
+      flex-direction: column;
+      float: right;
+      cursor: pointer; 
+    }
+    .bar { 
+      height: 3px; 
+      width: 25px; 
+      background: #fff; 
+      margin: 4px 0; 
+      transition: 0.3s; 
+    }
+
+    @media(max-width: 768px) {
+      nav ul { 
+        position: fixed; 
+        top: 70px; 
+        right: -100%; 
+        flex-direction: column; 
+        background: #151627; 
+        width: 200px; 
+        transition: 0.3s; 
+        padding: 1rem; 
+        border-radius: 10px; 
+      }
+      
+      nav ul.active { right: 20px; }
+      
+      .hamburger { display: flex; }
+    }
+
+    section { 
+      padding: 6rem 2rem 4rem; 
+      max-width: 1200px; 
+      margin: auto; 
+    }
+    
+    .about { 
+      text-align: center; 
+      margin-top: 100px; 
+    }
+    
+    .about h1 { 
+      font-size: 2.5rem; 
+      color: #00f5a0; 
+    }
+    
+    .about p { 
+      margin-top: 1rem; 
+      color: #ccc; 
+      line-height: 1.7; 
+      font-size: 1.1rem; 
+    }
+
+    .filter{
+      color: white;
+      margin: 1rem;
+      text-align: center;
+    }
+
+    .filter-buttons { 
+      text-align: center; 
+      margin: 3rem 0; 
+    }
+    
+    .filter-buttons button {
+      background: #1b1d32; 
+      color: #fff; 
+      border: none; 
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem; 
+      border-radius: 25px;
+      cursor: pointer; 
+      transition: 0.3s;
+    }
+    
+    .filter-buttons button.active, .filter-buttons button:hover {
+      background: linear-gradient(135deg, #00f5a0, #00d9f5); 
+      color: #000;
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .video-card {
+      position: relative; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      background: #1b1d32;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .video-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .video-card video { 
+      width: 100%; 
+      height: auto; 
+      display: block; 
+    }
+    
+    .video-card h3 { 
+      padding: 0.8rem; 
+      font-size: 1rem; 
+    }
+
+    .contact { 
+      text-align: center; 
+      margin-top: 5rem;
+    }
+    
+    .contact h2 { 
+      color: #00f5a0; 
+      margin-bottom: 1rem; 
+      font-size: 2rem; 
+    }
+    
+    form { 
+      max-width: 500px; 
+      margin: auto; 
+      display: flex;
+      flex-direction: column;
+      gap: 1rem; 
+    }
+    
+    input, textarea { 
+      padding: 0.8rem; 
+      border: none; 
+      border-radius: 8px;
+      background: #151627; 
+      color: #fff; 
+    }
+    
+    button.submit { 
+      background: linear-gradient(135deg, #00f5a0, #00d9f5); 
+      border: none;
+      padding: 0.8rem; 
+      border-radius: 8px;
+      cursor: pointer; 
+      color: #000; 
+      font-weight: 600; 
+      transition: 0.3s;
+    }
+    
+    button.submit:hover {transform: scale(1.05); }
+
+    .socials { margin: 2rem 0; display: flex; justify-content: center; gap: 1.2rem; }
+    .socials a { font-size: 1.5rem; color: #00f5a0; transition: 0.3s; }
+    .socials a:hover { color: #00d9f5; transform: scale(1.2); }
+
+    footer {
+      background: #151627;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #aaa; 
+      font-size: 0.9rem; 
+      margin-top: 4rem;
+    }
+    
+    footer a { color: #00f5a0; margin: 0 0.5rem; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 1024px) {
+      .about h1 { font-size: 2.2rem; }
+      .about p { font-size: 1rem; }
+    }
+    
+    @media (max-width: 768px) {
+      section { padding: 5rem 1.5rem; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .about h1 { font-size: 2rem; }
+    }
+    
+    @media (max-width: 600px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .about h1 { font-size: 1.8rem; }
+    }
+    
+  </style>
+  
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <div class="logo">EditKaro</div>
+    <div class="hamburger" id="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about" id="about">
+    <h1>We Bring Stories to Life 🎬</h1>
+    <p>
+      EditKaro is a creative social media marketing and video editing agency that transforms ideas into impactful visuals. 
+      We specialize in short-form, long-form, gaming, eCommerce, and documentary-style videos — crafting stories that engage and inspire audiences.
+    </p>
+  </section>
+
+  <section id="services">
+    <div><h3 class="filter">Apply Filters</h3></div>
+    <div class="filter-buttons">
+      <button class="active" onclick="filterVideos('all')">All</button>
+      <button onclick="filterVideos('short')">Short-form</button>
+      <button onclick="filterVideos('long')">Long-form</button>
+      <button onclick="filterVideos('gaming')">Gaming</button>
+      <button onclick="filterVideos('football')">Football</button>
+      <button onclick="filterVideos('ecom')">eCommerce</button>
+      <button onclick="filterVideos('docu')">Documentary</button>
+      <button onclick="filterVideos('color')">Color Grading</button>
+      <button onclick="filterVideos('anime')">Anime</button>
+      <button onclick="filterVideos('ads')">Ads</button>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+      <!-- SHORT-FORM -->
+      <div class="video-card" data-category="short">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" muted loop></video>
+        <h3>Short-form Edit #1</h3>
+      </div>
+      <div class="video-card" data-category="short">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-10s.mp4" muted loop></video>
+        <h3>Short-form Edit #2</h3>
+      </div>
+
+      <!-- LONG-FORM -->
+      <div class="video-card" data-category="long">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-15s.mp4" muted loop></video>
+        <h3>Long-form Edit #1</h3>
+      </div>
+
+      <!-- GAMING -->
+      <div class="video-card" data-category="gaming">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-20s.mp4" muted loop></video>
+        <h3>Gaming Montage #1</h3>
+      </div>
+      <div class="video-card" data-category="gaming">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-30s.mp4" muted loop></video>
+        <h3>Gaming Edit #2</h3>
+      </div>
+
+      <!-- FOOTBALL -->
+      <div class="video-card" data-category="football">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-40s.mp4" muted loop></video>
+        <h3>Football Edit #1</h3>
+      </div>
+
+      <!-- ECOM -->
+      <div class="video-card" data-category="ecom">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-50s.mp4" muted loop></video>
+        <h3>eCommerce Ad #1</h3>
+      </div>
+
+      <!-- DOCUMENTARY -->
+      <div class="video-card" data-category="docu">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-15s.mp4" muted loop></video>
+        <h3>Documentary Clip #1</h3>
+      </div>
+
+      <!-- COLOR GRADING -->
+      <div class="video-card" data-category="color">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-10s.mp4" muted loop></video>
+        <h3>Color Grading Example</h3>
+      </div>
+
+      <!-- ANIME -->
+      <div class="video-card" data-category="anime">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-30s.mp4" muted loop></video>
+        <h3>Anime Edit #1</h3>
+      </div>
+
+      <!-- ADS -->
+      <div class="video-card" data-category="ads">
+        <video src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" muted loop></video>
+        <h3>Ad Campaign #1</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have a project in mind? Let's collaborate!</p>
+    <br>
+
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit">Send Message</button>
+    </form>
+
+    <div class="socials">
+      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 EditKaro.in — All rights reserved.</p>
+    <br>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Legal</a>
+    </p>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Filter functionality
+    function filterVideos(category) {
+      const buttons = document.querySelectorAll('.filter-buttons button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const videos = document.querySelectorAll('.video-card');
+      videos.forEach(video => {
+        if (category === 'all' || video.dataset.category === category) {
+          video.style.display = 'block';
+        } else {
+          video.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+  </html>
