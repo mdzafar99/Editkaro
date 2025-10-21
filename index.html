@@ -177,6 +177,75 @@
       font-size: 1rem; 
     }
 
+    .testimonials {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #0e0f1a, #151627);
+  color: #fff;
+}
+.testimonials h2 {
+  font-size: 2.2rem;
+  color: #00f5a0;
+  margin-bottom: 3rem;
+}
+
+.testimonial-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.testimonial-card {
+  background: #1b1d32;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+.testimonial-card p {
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.client-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.client-info h4 {
+  color: #00f5a0;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.client-info span {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+@media (max-width: 600px) {
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+  .testimonial-card {
+    padding: 1.2rem;
+  }
+}
+
     .contact { 
       text-align: center; 
       margin-top: 5rem;
@@ -390,6 +459,53 @@
       <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
     </div>
   </section>
+
+  <section class="testimonials" id="testimonials">
+  <h2>What Our Clients Say 💬</h2>
+
+  <div class="testimonial-container">
+    <div class="testimonial-card">
+      <p>
+        “EditKaro.in completely transformed our brand presence online! The videos were crisp, emotional, and exactly what we envisioned.”
+      </p>
+      <div class="client-info">
+        <img src="https://i.pravatar.cc/100?img=12" alt="Client Photo">
+        <div>
+          <h4>Riya Sharma</h4>
+          <span>Marketing Head, GlowSkin</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>
+        “They turned hours of raw gaming footage into a cinematic highlight reel — just perfect. Highly recommended!”
+      </p>
+      <div class="client-info">
+        <img src="https://i.pravatar.cc/100?img=5" alt="Client Photo">
+        <div>
+          <h4>Arjun Patel</h4>
+          <span>Gaming Creator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>
+        “The team is super professional and creative. Our eCommerce ads saw a 3x engagement boost after their edits!”
+      </p>
+      <div class="client-info">
+        <img src="https://i.pravatar.cc/100?img=8" alt="Client Photo">
+        <div>
+          <h4>Priya Mehta</h4>
+          <span>Founder, UrbanCart</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- ===== FOOTER ===== -->
   <footer>
